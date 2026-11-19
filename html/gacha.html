@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ブラウザゲーム　ガチャシミュレーター</title>
+<style>
+    body {font-family: sans-serif;background:#1a1a2e;color:#fff;text-align:center;padding: 30px;}
+    .controls{margin-bottom:30px;}
+    button{padding:15px 30px;font-size:18px;font-weight:bold;border: none;border-radius: 8px;cursor: pointer;margin:0 10px;transition: transform 0.1s;}
+    button:active{transform: scale(0.95);}
+    .btn-single{background: #4ecca3;color:#1a1a2e;}
+    .btn-multi{background:#ff9f1c;color:#1a1a2e;}
+
+    /*結果グリッド*/
+    .result-grid {display: grid;grid-template-columns:repeat(5,1fr);gap:15px;max-width: 900px;margin:0 auto;}
+    .card {padding: 20px 10px; border-color:10px;background:#16213e;border: 2px sorlid#444;animation: popIn 0.4s ease forwards;opacity: 0;}
+
+    /*レアリティ別装飾*/
+    .rarity-N {border-color: #8d99ae;color: #edf2f4;}
+    .rarity-R {border-color: #3a86ff;color: #8ecae6;}
+    .rarity-SR {border-color: #ffbe0b;color: #ffbe0b;box-shadow: 0 0 12px rgba(25,190,11,0.5);}
+    .rarity-SSR {border-color: #ff006e;color: #fff;background:linear-gradient(13deg,#3a0ca3,#f72585);box-shadow:0 0 20px #ff006e;font-weight:bold;}
+
+    .badge {display: inline-block; padding:3px 8px;border-radius:4px;font-size:12px;margin-bottom:8px;background:rgba(0,0,0,0.4);}
+    @keyframes popIN{
+        from{transform:scale(0.5);opacity:0;}
+        to  {transform: scale(1);opacity: 1;}
+    }
+</style>
+</head>
+<body>
+
+    <h1>召喚ガチャ</h1>
+    <div class="controls">
+        <button class="btn-siingle" onclick="drawGacha(1)">1回引く</button>
+        <button class="btn-multi" onclick="drawGacha(10)">10連ガチャを引く</button>
+    </div>
+
+    <div id="result-area" class="result-grid"></div>
+
+    <script>
+        async function drawGacha(count) {
+            const area =document.getElementById('result-area');
+            area.innerHTML ='<p style="grid-column:1/-1;">抽選中...<p/>';
+
+                const formData =new FormDAta();
+                formData.append('count',count);
+
+                try{
+                    const res=await fetch('gacha_api.php',{method:'POST',body:formDAta});
+                    const data =await res.json();
+
+                    area.innerHTML ='';
+                    data.results.forEach((item, index)=>{
+                        const card =document.cureateElement('div');
+                    })
+                }
+        }
+    </script>
+</body>
+</html>

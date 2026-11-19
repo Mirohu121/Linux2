@@ -1,0 +1,42 @@
+CREATE gaacha_itemss(
+id INT AUTO _INCREMEMT PRIMARY KEY,
+name VARCHAR(100) NOT N
+INSERT  INTO NULL COMMENT '排出済み（合計10000なら1＝0.01%'
+
+);
+7-- サンプルデータの投入（合計 weight = 10000）
+INSERT INTO gacha_items (name, rarity, weight) VALUES
+('ひのきの棒', 'N', 4000),       -- 40%
+('布の服', 'N', 3000),           -- 30%
+('鉄の剣', 'R', 1500),           -- 15%
+('鋼の盾', 'R', 1000),           -- 10%
+('炎の魔導書', 'SR', 400),       -- 4%
+('エクスカリバー', 'SSR', 100);  -- 1%
+
+-- 2. ガチャ排出履歴テーブル
+CREATE TABLE gacha_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    item_id INT NOT NULL,
+    drawn_at DATETIME DEFAULT CURRENT_TIMESTAMP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
